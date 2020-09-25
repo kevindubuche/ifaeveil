@@ -16,6 +16,7 @@ use Session;
 use App\Models\Matiere;
 use App\Models\Lecon;
 use App\User;
+use App\Models\Eleve;
 
 class MatiereController extends AppBaseController
 {
@@ -36,10 +37,30 @@ class MatiereController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $matieres = $this->matiereRepository->all();
 
-        return view('matieres.index')
+
+        $matieres = $this->matiereRepository->all();
+        $user = User::find(auth()->user()->id);
+        //ADM SEE ALL COURSES
+        if($user->role == 1 ){
+            return view('matieres.index')
             ->with('matieres', $matieres);
+        }
+           //teachers SEE only his courses
+           else  if($user->role == 2 ){
+            $matieres = Matiere::where(['prof_id'=> $user->id])->get();
+            return view('matieres.index')
+            ->with('matieres', $matieres);
+        }
+          else  {
+            $student = Eleve::where(['user_id'=> $user->id])->first();
+            $matieres = Matiere::where(['class_id'=> $student->class_id])->get();
+            return view('matieres.index')
+            ->with('matieres', $matieres);
+        }
+       
+
+
     }
 
     /**

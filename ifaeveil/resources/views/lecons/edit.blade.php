@@ -18,6 +18,7 @@
                         <!-- lecon Name Field -->
                         <input type="hidden" id="creer_par" name="creer_par" value="{{$lecon->creer_par}}">
                         <input type="hidden" id="publier" name="publier" value="{{$lecon->publier}}">
+                        <input type="hidden" id="matiere_id" name="matiere_id" value="{{$lecon->matiere_id}}">
 
                         
 <!-- lecon Name Field -->

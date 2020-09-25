@@ -20,9 +20,6 @@
     <li class="{{ Request::is('classes*') ? 'active' : '' }}">
         <a href="{{ route('classes.index') }}"><i class="fa fa-graduation-cap"></i><span>Classes</span></a>
     </li>
-    <li class="{{ Request::is('matieres*') ? 'active' : '' }}">
-        <a href="{{ route('matieres.index') }}"><i class="fa fa-book"></i><span>Matieres</span></a>
-    </li>
     <li class="{{ Request::is('etapes*') ? 'active' : '' }}">
         <a href="{{ route('etapes.index') }}"><i class="fa fa-calendar-times-o"></i><span>Etapes</span></a>
     </li>
@@ -34,7 +31,9 @@
 </ul>
 </li>
 
-
+<li class="{{ Request::is('matieres*') ? 'active' : '' }}">
+    <a href="{{ route('matieres.index') }}"><i class="fa fa-book"></i><span>Matieres</span></a>
+</li>
 <li class="{{ Request::is('profs*') ? 'active' : '' }}">
     <a href="{{ route('profs.index') }}"><i class="fa fa-user-circle"></i><span>Professeurs</span></a>
 </li>
@@ -70,5 +69,21 @@
             <a href="{{ route('soumissions.index') }}"><i class="fa fa-book"></i><span>Soumissions</span></a>
         </li>
     </ul>
+</li>
+
+<li class="{{ Request::is('quizQuestions*') ? 'active' : '' }}">
+    <a href="{{ route('quizQuestions.index') }}"><i class="fa fa-edit"></i><span>Quiz Questions</span></a>
+</li>
+
+{{-- <li class="{{ Request::is('quizReponses*') ? 'active' : '' }}">
+    <a href="{{ route('quizReponses.index') }}"><i class="fa fa-edit"></i><span>Quiz Reponses</span></a>
+</li>
+
+<li class="{{ Request::is('quizPropositions*') ? 'active' : '' }}">
+    <a href="{{ route('quizPropositions.index') }}"><i class="fa fa-edit"></i><span>Quiz Propositions</span></a>
+</li>
+ --}}
+<li class="{{ Request::is('quizzes*') ? 'active' : '' }}">
+    <a href="{{ route('quizzes.index') }}"><i class="fa fa-edit"></i><span>Quizzes</span></a>
 </li>
 

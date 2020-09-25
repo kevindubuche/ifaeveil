@@ -55,7 +55,24 @@ Route::group(['middleware' => ['ifLogin','auth']], function(){
     Route::resource('exams', 'ExamController');
 
     Route::resource('soumissions', 'SoumissionController');
+        
+    Route::resource('messages', 'MessageController');
 
+    Route::resource('messagesAssignations', 'Messages_assignationController');
+    
+    Route::resource('quizQuestions', 'Quiz_questionController');
+
+    Route::resource('quizReponses', 'Quiz_reponseController');
+
+    Route::resource('quizPropositions', 'Quiz_propositionController');
+
+    Route::resource('quizzes', 'QuizController');
+
+    Route::post('/startQuiz','QuizController@startQuiz');
+
+    Route::post('/endQuiz','QuizController@endQuiz');
+
+    
 
 });
 
@@ -64,6 +81,5 @@ Route::group(['middleware' => ['ifLogin','auth']], function(){
 
 
 
-Route::resource('messages', 'MessageController');
 
-Route::resource('messagesAssignations', 'Messages_assignationController');
+

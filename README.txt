@@ -18,7 +18,7 @@ php artisan infyom:scaffold Admin --fromTable --tableName=admins
 10- Test route:  php artisan make:test AdminTest
   vendor/bin/phpunit --filter test_only_login_users_can_see_admin_list
 
-php artisan infyom:scaffold Messages_assignation --fromTable --tableName=messages_assignations
+php artisan infyom:scaffold Quiz_proposition --fromTable --tableName=quiz_propositions
 
 
 test CRUD a faire
@@ -36,6 +36,6 @@ test CRUD a faire
 12- exams
 13- soumissions
 14- messages
-
-
+15- quiz questions
+16- quiz
 

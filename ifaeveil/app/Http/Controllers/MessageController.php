@@ -84,7 +84,7 @@ class MessageController extends AppBaseController
         //  dd($student->first_name);
         $actuTeacher = Message::join('messages_assignations','messages_assignations.message_id','=','messages.id')//qui sont dans l'horaire de l'etudiant
         ->where('class_id',$student->class_id)
-        ->select('actus.*')
+        ->select('messages.*')
         ->get();
     return view('messages.index')
         ->with('messages', $actuTeacher);
@@ -290,9 +290,10 @@ class MessageController extends AppBaseController
             return redirect(route('messages.index'));
         }
 
-        $this->messageRepository->delete($id);
+        Message::where('id', $id)->forceDelete();
 
-        Flash::success('Message deleted successfully.');
+        Flash::success('SUCCES !');
+
 
         return redirect(route('messages.index'));
     }
