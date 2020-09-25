@@ -36,4 +36,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public  function GetUser($role, $id){
+        $prof = User::join('profs', 'profs.user_id','=', 'users.id')
+                    ->where('users.id',$id)
+                    ->first();
+      $eleve = User::join('eleves', 'eleves.user_id','=', 'users.id')
+                   ->where('users.id',$id)
+                   ->first();
+     $admin = User::join('admins', 'admins.user_id','=', 'users.id')
+                   ->where('users.id',$id)
+                   ->first();
+            if ($role == 1){
+    
+            return $admin;
+        }
+        if ($role == 2){
+            
+            return $prof;
+        }
+       
+       return $eleve;
+    }
 }

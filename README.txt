@@ -18,9 +18,8 @@ php artisan infyom:scaffold Admin --fromTable --tableName=admins
 10- Test route:  php artisan make:test AdminTest
   vendor/bin/phpunit --filter test_only_login_users_can_see_admin_list
 
-php artisan infyom:scaffold Eleve --fromTable --tableName=eleves
+php artisan infyom:scaffold Messages_assignation --fromTable --tableName=messages_assignations
 
-JOUTER PASSWORD POU TOUT USER
 
 test CRUD a faire
 1- admins
@@ -30,6 +29,13 @@ test CRUD a faire
 5- profs
 6- assignations
 7- eleves
+8- users
+9- Changer mot de passe
+10- matieres
+11- lecons
+12- exams
+13- soumissions
+14- messages
 
 
 

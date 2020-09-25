@@ -43,7 +43,7 @@ style="background-color: rgb(219, 219, 223);">
             <!-- Logo -->
             <a href="#" class="logo">
                 <b>IFA</b>
-                <img src="{{asset('logo.jpg')}}"
+                <img src="{{asset('logo.png')}}"
                                     style="width: 40px; height:40px; border-radius:20px;" alt="User Image"/>
             </a>
 
@@ -58,7 +58,7 @@ style="background-color: rgb(219, 219, 223);">
                         <h5>Administrateur</h5>
                         @break
                     @case(2)
-                         <h5>Professeurs</h5>
+                         <h5>Professeur</h5>
                         @break
                         @case(3)
                         <h5>Élève</h5>
@@ -84,7 +84,7 @@ style="background-color: rgb(219, 219, 223);">
                                 @endif
                              
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs" style="color:black;">{{ Auth::user()->first_name}} {{ Auth::user()->last_name}}</span>
+                                <span class="hidden-xs" style="color:black;">{{ Auth::user()->username}} </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
@@ -96,7 +96,7 @@ style="background-color: rgb(219, 219, 223);">
                                     alt="User Image"/>
                                     @endif
                                     <p style="color:black;">
-                                        {{ Auth::user()->first_name}} {{ Auth::user()->last_name}}
+                                        {{ Auth::user()->username}} 
                                         <small style="color:black;">
                                             {{-- Membre depuis {{ Auth::user()->created_at->format('M. Y') }} --}}
                                             @switch(Auth::user()->role)

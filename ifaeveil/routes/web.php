@@ -29,16 +29,41 @@ Route::get('/home', 'HomeController@index')->middleware('verified');
 Route::group(['middleware' => ['ifLogin','auth']], function(){
 
     Route::resource('admins', 'AdminController');
+
+    Route::resource('classes', 'ClasseController');
+
+    Route::resource('etapes', 'EtapeController');
+
+    Route::resource('annees', 'AnneeController');
+
+    Route::resource('profs', 'ProfController');
+
+    Route::resource('assignations', 'AssignationsController');
+
+    Route::resource('eleves', 'EleveController');
+
+    Route::resource('allUsers', 'AllUserController');
+
+    Route::resource('matieres', 'MatiereController');
+
+    Route::resource('lecons', 'LeconController');
+
+    Route::get('/profile/{id}', 'AllUserController@profile');
+
+    Route::post('/userUpdatePassword','AllUserController@userUpdatePassword');
+
+    Route::resource('exams', 'ExamController');
+
+    Route::resource('soumissions', 'SoumissionController');
+
+
 });
 
-Route::resource('classes', 'ClasseController');
 
-Route::resource('etapes', 'EtapeController');
 
-Route::resource('annees', 'AnneeController');
 
-Route::resource('profs', 'ProfController');
 
-Route::resource('assignations', 'AssignationsController');
 
-Route::resource('eleves', 'EleveController');
+Route::resource('messages', 'MessageController');
+
+Route::resource('messagesAssignations', 'Messages_assignationController');
