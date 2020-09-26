@@ -18,6 +18,7 @@
             <input type="hidden" id="quiz_id" value="{{$quiz->id }}">
             {{-- <input type="hidden" id="categorie" value="{{$quiz->categorie }}">--}}
             <input type="hidden" id="nombre" value="{{$quiz->nombre_questions }}"> 
+            <input type="hidden" id="duree" value="{{$quiz->duree }}"> 
             @if(Auth::user()->role == 3)
             <input type="hidden" id="student_id" value="{{Auth::user()->id }}"> 
             @endif
@@ -27,28 +28,6 @@
                     <div >
                           @csrf<!-- {{csrf_field()}} -->
                           
-                             {{-- <div class="form-group has-feedback">
-                                    <label for="categorie">Choisir une catégorie :</label>
-                                       <select name="categorie" id="categorie" class="form-control">
-                                       <option value="ICND1">ICND1</option>
-                                       <option value="ICND2">ICND2</option>
-                                       <option value="CCNA">CCNA</option>
-                                       <option value="CCNP">CCNP</option>
-                                       <option value="SECURITY">SECURITY</option>
-                                  </select>
-                              </div>
-                               
-           
-                              <div class="form-group has-feedback">
-                                    <label for="categorie">Choisir le nombre de questions :</label>
-                                       <select name="nombre" id="nombre" class="form-control">
-                                       <option value="10">10</option>
-                                       <option value="20">20</option>
-                                       <option value="30">30</option>
-                                       <option value="40">40</option>
-                                       <option value="50">50</option>
-                                  </select>
-                              </div> --}}
                               <h3>ATTENTION !</h3>
                               <p>Il est demandé à l'élève de ne soumettre que des travaux personnels comme s'il était en salle de classe pour
                                   un examen!
@@ -67,7 +46,7 @@
                                    <div class="modal-content">
            
                                            <div class="modal-header">
-                                               <h4 class="modal-title">Quiz</h4>
+                                               <h5 >Temps restant <div id="demo"></div></h5>
                                                <h2  class="close" id="score">Score: </h2>
                                            </div>
            
@@ -120,7 +99,7 @@
      $('#soumettre').attr("disabled",false);
      $('#score').empty();
    
-     
+     var DEJA_SOUMMIS = 0;
     
     
      $.ajaxSetup({
@@ -144,7 +123,7 @@
                      text+=' <table id=\'list\' class=\' display   table   table-condensed\'>'
                         text+='      <thead>'
                             text+='      <tr>'
-                            text+='              <th>CATEGORIE</th>'         
+                            text+='              <th>QUIZ</th>'         
                             text+='         </tr>'
                         text+='      </thead>'
     
@@ -206,7 +185,7 @@
     
     
                     $(document).on('click','#soumettre',function(){
-                      
+                        DEJA_SOUMMIS = 1;
                         $('#soumettre').attr("disabled",true);
         console.log('SOUMETTRE:');
         var lesID=[];
@@ -309,7 +288,7 @@
                     $.ajax({
                         url:'/noteQuizzes.store',
                         type:'POST',
-                        data:{'student_id':student_id,'quiz_id':quiz_id,'score':score*100/nombre
+                        data:{'student_id':student_id,'quiz_id':quiz_id,'score':(score*100/nombre).toFixed(2)
                             },
                         success:function(lesReponses)
                         {   console.log(lesReponses);
@@ -333,8 +312,44 @@
                 }
             });
     });
+
+
+    var duree = $('#duree').val();
+    var ok = countDown(duree);
+  function countDown(duree){
+      // Set the date we're counting down to
+var countDownDate = new Date().getTime()+(duree*60*1000);
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
     
- 
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = hours + ": "
+  + minutes + ": " + seconds + " ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "TERMINE";
+    if(DEJA_SOUMMIS == 0){
+         $('#soumettre').click()
+    }
+   
+  }
+}, 1000);
+  }
     
     
     </script>

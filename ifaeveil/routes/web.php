@@ -28,19 +28,19 @@ Route::get('/home', 'HomeController@index')->middleware('verified');
 
 Route::group(['middleware' => ['ifLogin','auth']], function(){
 
-    Route::resource('admins', 'AdminController');
+    Route::resource('admins', 'AdminController')->middleware('ifAdm');
 
-    Route::resource('classes', 'ClasseController');
+    Route::resource('classes', 'ClasseController')->middleware('ifAdm');
 
-    Route::resource('etapes', 'EtapeController');
+    Route::resource('etapes', 'EtapeController')->middleware('ifAdm');
 
-    Route::resource('annees', 'AnneeController');
+    Route::resource('annees', 'AnneeController')->middleware('ifAdm');
 
-    Route::resource('profs', 'ProfController');
+    Route::resource('profs', 'ProfController')->middleware('ifAdm');
 
-    Route::resource('assignations', 'AssignationsController');
+    Route::resource('assignations', 'AssignationsController')->middleware('ifAdm');
 
-    Route::resource('eleves', 'EleveController');
+    Route::resource('eleves', 'EleveController')->middleware('ifAdm');
 
     Route::resource('allUsers', 'AllUserController');
 
@@ -48,7 +48,7 @@ Route::group(['middleware' => ['ifLogin','auth']], function(){
 
     Route::resource('lecons', 'LeconController');
 
-    Route::get('/profile/{id}', 'AllUserController@profile');
+    Route::get('/profile/{id}', 'AllUserController@profile')->name('profile');
 
     Route::post('/userUpdatePassword','AllUserController@userUpdatePassword');
 
@@ -60,11 +60,11 @@ Route::group(['middleware' => ['ifLogin','auth']], function(){
 
     Route::resource('messagesAssignations', 'Messages_assignationController');
     
-    Route::resource('quizQuestions', 'Quiz_questionController');
+    Route::resource('quizQuestions', 'Quiz_questionController')->middleware('ifAdm');
 
-    Route::resource('quizReponses', 'Quiz_reponseController');
+    Route::resource('quizReponses', 'Quiz_reponseController')->middleware('ifAdm');
 
-    Route::resource('quizPropositions', 'Quiz_propositionController');
+    Route::resource('quizPropositions', 'Quiz_propositionController')->middleware('ifAdm');
 
     Route::resource('quizzes', 'QuizController');
 
@@ -72,9 +72,16 @@ Route::group(['middleware' => ['ifLogin','auth']], function(){
 
     Route::post('/endQuiz','QuizController@endQuiz');
 
-    
+    Route::post('/endQuiz','QuizController@endQuiz');
+
+    Route::resource('quiznotes', 'QuiznoteController');
+
+    Route::post('noteQuizzes.store', 'QuiznoteController@store');
+
 
 });
+
+
 
 
 

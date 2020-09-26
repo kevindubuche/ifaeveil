@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>I.F.A</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -12,8 +12,9 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-image: linear-gradient(#b89f12, #ffffff);
+                /* background-color: #fff;
+                color: #636b6f; */
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -61,6 +62,16 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            /* kev */
+                .button {
+                transition-duration: 0.4s;
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+                
+                }
+
+                .button:hover {
+                color: white;
+                }
         </style>
     </head>
     <body>
@@ -68,33 +79,41 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}" style="color: white" ><strong>Accueil</strong></a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
+                        <a href="{{ route('login') }}" style="color: white"><strong>Connexion</strong></a>
                     @endauth
                 </div>
             @endif
 
             <div class="content">
+                <img src={{asset('logo.png')}} alt="logo" style="width: 110px; height: 100px">
                 <div class="title m-b-md">
-                    Laravel
+                    Institution Frère André
+                    Foyer Eveil
+                </div>
+                <div class="links">
+                    <a >Bienvenue dans votre école en ligne !
+                        Connectez-vous pour commencer.</a>
                 </div>
 
+                @if (Route::has('login'))               
+                    @auth
+                        <a href="{{ url('/home') }}" class="button"><h1><strong>Accueil</strong></h1></a>
+                   @else
+                        <a href="{{ route('login') }}" class="button"><h1><strong>Connexion</strong></h1></a>
+                    @endauth
+               
+            @endif
+                
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    33, Route des Dalles Carrefour Feuille
+                    +509 3867 2526 | +509 2227 6816 | +509 3107 8119
                 </div>
             </div>
         </div>
+        <footer class="main-footer" style="max-height: 100px;text-align: center">
+            Copyright © 2020 <span>Tout droit reservé | Institution Frère André _ Foyer Eveil</span>.
+        </footer>
     </body>
 </html>

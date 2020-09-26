@@ -44,7 +44,7 @@ style="background-color: rgb(219, 219, 223);">
             <a href="#" class="logo">
                 <b>IFA</b>
                 <img src="{{asset('logo.png')}}"
-                                    style="width: 40px; height:40px; border-radius:20px;" alt="User Image"/>
+                                    style="width: 30px; height:30px; " alt="User Image"/>
             </a>
 
             <!-- Header Navbar -->

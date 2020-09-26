@@ -1,6 +1,6 @@
-<div class='table-responsive' >
-    {{-- <table class="table" id="courses-table"> --}}
-        <table id='myTable' class=' display   table table-bordered table-striped table-condensed'>
+<div class=" table-responsive">
+    <table id='myTable' class=' display   table table-bordered table-striped table-condensed'>
+  
         <thead>
             <tr>
                 <th></th>
@@ -98,12 +98,11 @@
     </table>
 </div>
 
-
 @push('scripts')
 <script>
-
     $(document).ready(function()
     {
+        
         $('#myTable').DataTable({  
             // alert('okokok');
             select:true,
@@ -111,11 +110,11 @@
             "lengthMenu": "Voir _MENU_ lignes par page",
             "zeroRecords": "Aucune information",
             "info": "_PAGE_ sur _PAGES_",
-            "infoEmpty": "Aucun resultat trouvé",
-            "infoFiltered": "(filtre de _MAX_ total resultats)",
+            "infoEmpty": "Aucun résultat trouvé",
+            "infoFiltered": "(filtre de _MAX_ total résultats)",
             "search": "Rechercher",
             "paginate":{
-            "previous":"Precedent",
+            "previous":"Précedent",
             "next":"Suivant"
             }
 

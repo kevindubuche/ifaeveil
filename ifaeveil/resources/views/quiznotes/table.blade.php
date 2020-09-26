@@ -3,34 +3,39 @@
        
         <thead>
             <tr>
-                <th>Nom</th>
-        <th>Annee</th>
-        <th>Duree</th>
-        <th>Description</th>
+                <th>Eleve</th>
+                <th>Classe</th>
+        <th>Quiz</th>
+        <th>Score</th>
+        <th>Date</th>
+        @if(Auth::user()->role == 1)
                 <th >Action</th>
+         @endif
             </tr>
         </thead>
         <tbody>
-        @foreach($etapes as $etape)
+        @foreach($quiznotes as $quiznote)
             <tr>
-                <td>{{ $etape->nom }}</td>
-            <td>{{ $etape->annee }}</td>
-            <td>{{ $etape->duree }}</td>
-            <td>{{ $etape->description }}</td>
+                <td>{{ $quiznote->eleve($quiznote->id_eleve)->nom }} {{ $quiznote->eleve($quiznote->id_eleve)->prenom }}</td>
+            <td>{{ $quiznote->eleve($quiznote->id_eleve)->class->nom  }}</td>
+            <td>{{ $quiznote->quiz->titre }}</td>
+            <td>{{ $quiznote->score }} %</td>
+            <td>{{ $quiznote->created_at->format('d M. Y H:m:s') }}</td>
+            @if(Auth::user()->role == 1)
                 <td>
-                    {!! Form::open(['route' => ['etapes.destroy', $etape->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['quiznotes.destroy', $quiznote->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('etapes.show', [$etape->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="{{ route('etapes.edit', [$etape->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                        {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Confirmer')"]) !!}
+                       {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>
+             @endif
             </tr>
         @endforeach
         </tbody>
     </table>
 </div>
+
 @push('scripts')
 <script>
     $(document).ready(function()

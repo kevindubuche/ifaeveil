@@ -195,9 +195,10 @@ class QuizController extends AppBaseController
             return redirect(route('quizzes.index'));
         }
 
-        $this->quizRepository->delete($id);
+        Quiz::where('id', $id)->forceDelete();
 
-        Flash::success('Quizz modifié avec succès!');
+        Flash::success('SUCCES !');
+
 
         return redirect(route('quizzes.index'));
     }

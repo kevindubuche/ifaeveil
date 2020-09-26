@@ -86,7 +86,7 @@ class="hold-transition login-page"
             </div>
         </form>
 
-        <a href="{{ url('/password/reset') }}">Mot de passe oublié</a><br>
+        {{-- <a href="{{ url('/password/reset') }}">Mot de passe oublié</a><br> --}}
         {{-- <a href="{{ url('/register') }}" class="text-center">S'enregistrer comme membre</a> --}}
     </div>
     <!-- /.login-box-body -->
