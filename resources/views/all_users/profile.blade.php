@@ -12,9 +12,9 @@
           @if(Auth::user()->role == 1)
           Administrateur
          @elseif(Auth::user()->role == 2)
-          Professeur
+          Professeur(e)
          @elseif(Auth::user()->role == 3)
-         Etudiant
+         Etudiant(e)
          @endif
         </h1>
     </section>
@@ -84,7 +84,7 @@
                 </li>
                 <li class="list-group-item">
                   <b>Ajoute en</b> <a class="pull-right"> 
-    {{ date('Y')-$user->created_at->format('Y') }}
+               {{$user->created_at->format('M. Y') }}
                    
                      </a>
                 </li>
@@ -241,10 +241,22 @@
                                     readonly>
                                     </div>
                                 </div>
+
+                                
+                                <div class="form-group">
+                                  <label for="inputName"
+                                      class="col-sm-3 control-label">Date d'enregistrement</label>
+                                      <div class="col-sm-9">
+                                          <input type="email"
+                                              class="form-control"
+                                              id="inputName"
+                                              value="{{$user->created_at->format('d M. Y')}}"
+                                      readonly>
+                                      </div>
+                                  </div>
                                 
                                 @if(Auth::user()->role != 1)
                                 <div class="form-group ">
-                                    
                                         <label for="inputName"
                                         class="col-sm-3 control-label">Sexe</label>
                                       <div class="col-sm-9 ">
@@ -252,87 +264,216 @@
                                         class="form-control"
                                         id="inputName"
                                         value="{{$user->sexe}}"  
-                                           
-                                readonly>
-                                            
+                                      readonly>   
                                       </div>
-                                  
                                 </div>
+
+                                <div class="form-group">
+                                  <label for="inputName"
+                                      class="col-sm-3 control-label">Adresse</label>
+                                      <div class="col-sm-9">
+                                          <input 
+                                              class="form-control"
+                                              id="inputExperience"
+                                              readonly
+                                              value="{{$user->adresse}}"
+                                              >
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="inputName"
+                                        class="col-sm-3 control-label">Telephone</label>
+                                        <div class="col-sm-9">
+                                            <input type="email"
+                                                class="form-control"
+                                                id="inputName"
+                                                value="{{$user->tel}}"
+                                        readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="inputName"
+                                          class="col-sm-3 control-label">Religion</label>
+                                          <div class="col-sm-9">
+                                              <input type="text"
+                                                  class="form-control"
+                                                  id="inputName"
+                                                  value="{{$user->religion}}"
+                                          readonly>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="inputName"
+                                            class="col-sm-3 control-label">Date de naissance</label>
+                                            <div class="col-sm-9">
+                                                <input type="email"
+                                                    class="form-control"
+                                                    id="inputName"
+                                                    @if(Auth::user()->role == 2)
+                                                    value="{{$user->datenaissance}}"
+                                                    @endif
+                                                    @if(Auth::user()->role == 3)
+                                                    value="{{$user->date_naissance}}"
+                                                    @endif
+                                            readonly>
+                                            </div>
+                                        </div>
                                 @endif
+                                @if(Auth::user()->role == 3)
+                                <div class="form-group ">
+                                  <label for="inputName"
+                                  class="col-sm-3 control-label">Classe</label>
+                                <div class="col-sm-9">
+                                  <input type="email"
+                                  class="form-control"
+                                  id="inputName"
+                                      value=" {{$user->class->nom}}"    
+                               readonly>   
+                                </div>
 
                                 <div class="form-group ">
-                                
+                                  <label for="inputName"
+                                  class="col-sm-3 control-label">Nom du pere</label>
+                                <div class="col-sm-9">
+                                  <input type="email"
+                                  class="form-control"
+                                  id="inputName"
+                                      value=" {{$user->nom_pere}}"    
+                               readonly>   
+                                </div>
+                          </div>
+
+                          <div class="form-group ">
+                            <label for="inputName"
+                            class="col-sm-3 control-label">Telephone du pere</label>
+                          <div class="col-sm-9">
+                            <input type="email"
+                            class="form-control"
+                            id="inputName"
+                                value=" {{$user->tel_pere}}"    
+                         readonly>   
+                          </div>
+                    </div>
+
+                    <div class="form-group ">
+                      <label for="inputName"
+                      class="col-sm-3 control-label">Nom de la mere</label>
+                    <div class="col-sm-9">
+                      <input type="email"
+                      class="form-control"
+                      id="inputName"
+                          value=" {{$user->nom_mere}}"    
+                   readonly>   
+                    </div>
+              </div>
+
+              <div class="form-group ">
+                <label for="inputName"
+                class="col-sm-3 control-label">Telephone de la mere</label>
+              <div class="col-sm-9">
+                <input type="email"
+                class="form-control"
+                id="inputName"
+                    value=" {{$user->tel_mere}}"    
+             readonly>   
+              </div>
+        </div>
+
+        <div class="form-group ">
+          <label for="inputName"
+          class="col-sm-3 control-label">Nom autre personne reponsable</label>
+        <div class="col-sm-9">
+          <input type="email"
+          class="form-control"
+          id="inputName"
+              value=" {{$user->nom_responsable}}"    
+       readonly>   
+        </div>
+  </div>
+
+  <div class="form-group ">
+    <label for="inputName"
+    class="col-sm-3 control-label">Telephone autre personne reponsable</label>
+  <div class="col-sm-9">
+    <input type="email"
+    class="form-control"
+    id="inputName"
+        value=" {{$user->tel_responsable}}"    
+ readonly>   
+  </div>
+</div>
+
+<div class="form-group ">
+  <label for="inputName"
+  class="col-sm-3 control-label">Date d'admission</label>
+<div class="col-sm-9">
+  <input type="email"
+  class="form-control"
+  id="inputName"
+      value=" {{$user->date_admission}}"    
+readonly>   
+</div>
+</div>
+                                  @endif
+                                  @if(Auth::user()->role == 2)
+                                <div class="form-group ">
                                         <label for="inputName"
                                         class="col-sm-3 control-label">Statut matrimonial</label>
                                       <div class="col-sm-9">
                                         <input type="email"
                                         class="form-control"
                                         id="inputName"
-                                       
-                                            value=" {{$user->statusmatrimonial}}"  
-                                           
-                                        
-                                readonly>
-                                            
+                                            value=" {{$user->statusmatrimonial}}"    
+                                     readonly>   
                                       </div>
-                                  
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="inputName"
-                                        class="col-sm-3 control-label">Date de naissance</label>
-                                        <div class="col-sm-9">
-                                            <input type="email"
-                                                class="form-control"
-                                                id="inputName"
-                                                @if(Auth::user()->role == 1)
-                                                value="{{$user->datenaissance}}"
-                                                @endif
-                                                @if(Auth::user()->role == 3)
-                                                value="{{$user->date_naissance}}"
-                                                @endif
-                                        readonly>
-                                        </div>
+                                <div class="form-group ">
+                                      <label for="inputName"
+                                      class="col-sm-3 control-label">Niveau</label>
+                                    <div class="col-sm-9">
+                                      <input type="email"
+                                      class="form-control"
+                                      id="inputName"
+                                          value=" {{$user->niveau}}"    
+                                  readonly>   
                                     </div>
+                              </div>
 
-                                    <div class="form-group">
-                                        <label for="inputName"
-                                            class="col-sm-3 control-label">Telephone</label>
-                                            <div class="col-sm-9">
-                                                <input type="email"
-                                                    class="form-control"
-                                                    id="inputName"
-                                                    value="{{$user->tel}}"
-                                            readonly>
-                                            </div>
-                                        </div>
+                              <div class="form-group ">
+                                <label for="inputName"
+                                class="col-sm-3 control-label">Option</label>
+                              <div class="col-sm-9">
+                                <input type="email"
+                                class="form-control"
+                                id="inputName"
+                                    value=" {{$user->option}}"    
+                             readonly>   
+                              </div>
+                        </div>
 
-                                        <div class="form-group">
-                                            <label for="inputName"
-                                                class="col-sm-3 control-label">Adresse</label>
-                                                <div class="col-sm-9">
-                                                    <input 
-                                                        class="form-control"
-                                                        id="inputExperience"
-                                                        readonly
-                                                        value="{{$user->adresse}}"
-                                                        >
-                                                  
-                                                   
-                                                </div>
-                                            </div>
+                        <div class="form-group ">
+                          <label for="inputName"
+                          class="col-sm-3 control-label">Date d'entree en service</label>
+                        <div class="col-sm-9">
+                          <input type="email"
+                          class="form-control"
+                          id="inputName"
+                              value=" {{$user->date_entree_en_service}}"    
+                       readonly>   
+                        </div>
+                  </div>
+                                @endif
 
-                                            <div class="form-group">
-                                                <label for="inputName"
-                                                    class="col-sm-3 control-label">Date d'enregistrement</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="email"
-                                                            class="form-control"
-                                                            id="inputName"
-                                                            value="{{$user->created_at->format('d M. Y')}}"
-                                                    readonly>
-                                                    </div>
-                                                </div>
+                              
+
+                                   
+
+                                       
+
 
                         </div>
 

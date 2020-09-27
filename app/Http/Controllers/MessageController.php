@@ -18,6 +18,8 @@ use App\Models\Message;
 use App\User;
 use App\Models\Eleve;
 use App\Models\Prof;
+use Illuminate\Support\Facades\Validator;
+use Session;
 
 class MessageController extends AppBaseController
 {

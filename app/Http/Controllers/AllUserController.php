@@ -239,4 +239,23 @@ class AllUserController extends AppBaseController
          }
  
      }
+
+
+     
+    public function verifyUsername(Request $request){
+        $user = $request->all();
+        //ann verifye username la
+        $exist = User::where(['username'=> $user['username']])->count();
+
+        if ($exist == 1 ){
+            // Flash::success('Your username is correct');
+            echo "false"; die;
+        }else{
+            // Flash::error('Your username is not correct');
+            echo "true"; die;
+        }
+
+        // return view('students.lectures.biodata',compact('student'));
+    }
+
 }

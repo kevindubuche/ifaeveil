@@ -9,7 +9,7 @@
 <!-- Annee Field -->
 <div class="form-group col-sm-6">
     <label>Année académique</label>
-    <select class="form-control" name="nom" id="nom" required>
+    <select class="form-control" name="annee" id="annee" required>
         @foreach($annees as $annee)
         <option value="{{$annee->nom}}" @if($annee->nom == $etape->nom) selected="true" @endif>{{$annee->nom}}</option>   
         @endforeach

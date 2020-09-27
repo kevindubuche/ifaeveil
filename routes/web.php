@@ -78,6 +78,8 @@ Route::group(['middleware' => ['ifLogin','auth']], function(){
 
     Route::post('noteQuizzes.store', 'QuiznoteController@store');
 
+    Route::match(['get','post'], '/verify-username','AllUserController@verifyUsername');
+
 
 });
 

@@ -65,7 +65,7 @@ class ProfController extends AppBaseController
         $validator = Validator::make($request->all(), [
             'nom' => 'required|nullable|string|max:45',
             'prenom' => 'required|nullable|string|max:45',
-            'username' => 'required|nullable|string|max:45',
+            'username' => 'required|nullable|string|max:45|nim:3',
             'sexe' => 'required|nullable|string|max:45',
             'statusmatrimonial' => 'required|nullable|string|max:45',
             'datenaissance' => 'required|nullable|string|max:45',
