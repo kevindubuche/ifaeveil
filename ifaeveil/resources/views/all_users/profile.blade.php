@@ -103,7 +103,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <strong><i class="fa fa-user margin-r-5"></i>Status matrimonial</strong>
+              <strong><i class="fa fa-user margin-r-5"></i>Statut matrimonial</strong>
 
               <p class="text-muted">
                 @if ($user->statusmatrimonial==0)
@@ -263,7 +263,7 @@
                                 <div class="form-group ">
                                 
                                         <label for="inputName"
-                                        class="col-sm-3 control-label">Status matrimonial</label>
+                                        class="col-sm-3 control-label">Statut matrimonial</label>
                                       <div class="col-sm-9">
                                         <input type="email"
                                         class="form-control"

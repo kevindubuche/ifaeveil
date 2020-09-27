@@ -1,0 +1,61 @@
+test CRUD a faire ADM
+1- admins
+2- classes
+3- annees
+4- etapes
+5- profs
+6- assignations
+7- eleves
+8- users
+9- Changer mot de passe
+10- matieres
+11- lecons
+12- exams
+13- soumissions
+14- messages
+15- quiz questions
+16- quiz
+17- note quiz
+--------------------------
+A modifier:
+1- lien:https://ifaeveil.com/profile/1
+	logo pas centre
+--------------------------
+test CRUD a faire prof
+1- admins
+2- classes
+3- annees
+4- etapes
+5- profs
+6- assignations
+7- eleves
+8- users
+9- Changer mot de passe
+10- matieres
+11- lecons
+12- exams
+13- soumissions
+14- messages
+15- quiz questions
+16- quiz
+17- note quiz
+
+--------------------------
+test CRUD a faire eleve
+1- admins
+2- classes
+3- annees
+4- etapes
+5- profs
+6- assignations
+7- eleves
+8- users
+9- Changer mot de passe
+10- matieres
+11- lecons
+12- exams
+13- soumissions
+14- messages
+15- quiz questions
+16- quiz
+17- note quiz

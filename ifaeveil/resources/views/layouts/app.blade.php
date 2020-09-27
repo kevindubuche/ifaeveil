@@ -63,7 +63,7 @@ style="background-color: rgb(219, 219, 223);">
                         @case(3)
                         <h5>Élève</h5>
                        @break
-                       <h5>Élève</h5>
+                  
                     @default
                         
                 @endswitch
@@ -100,16 +100,16 @@ style="background-color: rgb(219, 219, 223);">
                                         <small style="color:black;">
                                             {{-- Membre depuis {{ Auth::user()->created_at->format('M. Y') }} --}}
                                             @switch(Auth::user()->role)
-                                            @case(0)
+                                            @case(1)
                                                 <h5>Administrateur</h5>
                                                 @break
-                                            @case(1)
+                                            @case(2)
                                                  <h5>Professeurs</h5>
                                                 @break
-                                                @case(2)
+                                                @case(3)
                                                 <h5>Élève</h5>
                                                @break
-                                               <h5>Élève</h5>
+                                             
                                             @default
                                                 
                                         @endswitch

@@ -14,7 +14,7 @@
              <label for="email_user">Question :</label>
              <input type="texte" class="form-control" value="{{ $aQuestion->content}}" name="content" id="content" readonly required="required" style="border-radius:50px;">
         </div>
-
+<hr>
         <div id='cont_rep'>
         @foreach($reponses as $reponse)
              <div class="form-group has-feedback">
@@ -23,7 +23,7 @@
               </div>
         @endforeach
         </div>
-
+<hr>
         <div id='cont_prop'>
         @foreach($propos as $propo)
              <div class="form-group has-feedback">

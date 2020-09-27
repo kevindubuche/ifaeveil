@@ -20,7 +20,7 @@
                      enctype="multipart/form-data">
                         @csrf
      
-                        @include('matieres.leconfields')
+                        @include('matieres.leconFields')
                     </form>
                 </div>
             </div>

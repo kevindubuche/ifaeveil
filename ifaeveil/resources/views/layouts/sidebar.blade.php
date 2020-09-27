@@ -24,7 +24,7 @@
             </div>
             <div class="pull-left info">
                 @if (Auth::guest())
-                <p>S I S</p>
+                <p>I F A</p>
                 @else
                 <a href="{{ url('/profile/'.Auth::user()->id)}}"
                     style="color: black; font-weight :bold; font-size:15px;">

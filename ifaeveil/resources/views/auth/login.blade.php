@@ -80,7 +80,7 @@ class="hold-transition login-page"
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat"style="border-radius:25px;">Connexion</button>
+                    <button type="submit" id="soumettre" class="btn btn-primary btn-block btn-flat"style="border-radius:25px;">Connexion</button>
                 </div>
                 <!-- /.col -->
             </div>
@@ -107,7 +107,12 @@ class="hold-transition login-page"
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
         });
+
+ 
+       
     });
+
+
 </script>
 
 

@@ -24,8 +24,8 @@
              <label for="email_user">Question :</label>
              <input type="texte" class="form-control" value="{{ $aQuestion->content}}" name="content" id="content"  required="required" style="border-radius:50px;">
         </div>
-
-        <div id='cont_rep'>
+<hr>
+     <div  id='cont_bonneRep'>
         @foreach($reponses as $reponse)
              <div class="form-group has-feedback">
                   <label for="telephone">Bonnes Reponses :</label>
@@ -33,8 +33,16 @@
               </div>
         @endforeach
         </div>
+        <div class="row">
+          <label >Ajouter d'autres bonnes reponses:</label>
+          <button class='btn btn-primary' type="button" id='ajout_rep'style='border-radius:50px;' >+</button>  
+          <a id="remRep"class=" btn btn-danger"  type="button" style='border-radius:50px;' >-</a>                 
+         
+      </div>
+     
 
-        <div id='cont_prop'>
+       <hr>
+       <div id='cont_prop'>
         @foreach($propos as $propo)
              <div class="form-group has-feedback">
                   <label for="telephone">Proposition :</label>
@@ -42,8 +50,15 @@
               </div>
         
         @endforeach
-        </div>
-
+     </div>
+        <div class="row">
+          <label >Ajouter plus de propositions de reponse:</label>
+          <button class='btn btn-primary' type="button" id='ajout_prop'style='border-radius:50px;' >+</button>  
+          <a id="rem"class=" btn btn-danger"  type="button" style='border-radius:50px;' >-</a>                 
+         
+      </div>
+      
+      
 
                         
        <div class="form-group has-feedback">
@@ -60,32 +75,76 @@
    
     </section>     
  </div>
+
+ 
 @push('scripts')
 <script>
-  
+     
+    var text='<div class="form-group has-feedback">';
+           text+=' <label >Proposition :</label>';
+          text+='<input type="text" class="form-control"  id="propositionB"name="propositionB"  required="required" style="border-radius:50px;">';
+                  text+='</div>';
+   $("#ajout_prop").click(function(){
 
-    $('#soumettre').click(function(){
-       console.log('soumettre');
-       var listPropo=[];
-              for(var i=0;i<$('#cont_prop').find('input').length;i++)
-              {
-               listPropo[i]=$('#cont_prop').find('input')[i].value;
-                
-              }             
-              $('#listPropo').val(listPropo);
-              console.log($('#listPropo').val());
+    $("#cont_prop").append($(text));
+});
 
-              var listRep=[];
-              for(var i=0;i<$('#cont_rep').find('input').length;i++)
-              {
-               listRep[i]=$('#cont_rep').find('input')[i].value;
-                
-              }             
-              $('#listRep').val(listRep);
-              console.log($('#listRep').val());
-              
+$('#rem').click(function(){
+     if($('#cont_prop').find('input').length > 2){
+    $("#cont_prop").find('div').last().remove();
+     }
 
-    });
+});
+
+
+var text2='<div class="form-group has-feedback">';
+           text2+=' <label >Reponse :</label>';
+          text2+='      <input type="text"  class="form-control"  id="explication" name="explication" placeholder="Expliquer la reponse" required="required" style="border-radius:50px;"> ';
+                  text2+='</div>';
+   $("#ajout_rep").click(function(){
+
+    $("#cont_bonneRep").append($(text2));
+});
+
+$('#remRep').click(function(){
+     if($('#cont_bonneRep').find('input').length > 1){
+    $("#cont_bonneRep").find('div').last().remove();
+     }
+
+});
+
+$('#soumettre').click(function(){
+ console.log('soumettre');
+ var listPropo=[];
+         var j=0;
+        for(var i=0;i<$('#cont_prop').find('input').length;i++)
+        {
+         listPropo[i]=$('#cont_prop').find('input')[i].value;
+       j++;
+          
+        }
+
+     //    listPropo[j]=($('#propositionA').val());
+     //    listPropo[j+1]=($('#propositionB').val());              
+        $('#listPropo').val(listPropo);
+        console.log($('#listPropo').val());
+
+        var listBonnesReponses=[];
+         var j=0;
+        for(var i=0;i<$('#cont_bonneRep').find('input').length;i++)
+        {
+         listBonnesReponses[i]=$('#cont_bonneRep').find('input')[i].value;
+       j++;
+          
+        }
+
+     //    listBonnesReponses[j]=($('#explication').val());            
+        $('#listRep').val(listBonnesReponses);
+        console.log($('#listRep').val());
+        
+
+});
 </script>
-       
+
+    
 @endpush

@@ -188,7 +188,7 @@ class AllUserController extends AppBaseController
          $testUser = User::where(['id'=> $id])->first(); 
           //IF ADMIN
           if($testUser->role == 1){
-             $user = Admin::where('id', $id)->first();
+             $user = Admin::where('user_id', $id)->first();
          // dd($student);
          return view('all_users.profile', compact('user'));
          }

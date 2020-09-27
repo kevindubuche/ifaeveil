@@ -30,7 +30,7 @@
 
 <!-- Statusmatrimonial Field -->
 <div class="form-group col-sm-6">
-    <label>Status matrimonial*</label>
+    <label>Statut matrimonial*</label>
     <select class="form-control" name="statusmatrimonial" id="statusmatrimonial" required>
         <option value="Célibataire" @if($prof->statusmatrimonial == 'Célibataire') selected="true" @endif>Célibataire</option>
         <option value="Fiancé(e)" @if($prof->statusmatrimonial == 'Fiancé(e)') selected="true" @endif>Fiancé(e)</option>

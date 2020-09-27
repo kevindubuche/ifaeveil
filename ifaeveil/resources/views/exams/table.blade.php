@@ -26,7 +26,7 @@
             <td>{{ $exam->creerPar->username }}</td>
             <td>{{ $exam->created_at->format('d M. Y') }}</td>
             <td>
-                <a href="/exam_files/{{$exam->filename}}" target='_blank'>   
+                <a href="{{asset('/exam_files/').'/'.$exam->filename}}" target='_blank'>   
                         <button  >Afficher</button>
                 </a>
             </td>

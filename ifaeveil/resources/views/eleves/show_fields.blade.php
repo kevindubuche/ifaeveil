@@ -188,7 +188,7 @@
                                          <input type="email"
                                          class="form-control"
                                          id="inputName"
-                                       value="{{$eleve->sex}}" 
+                                       value="{{$eleve->sexe}}" 
                                         
                                  readonly>
                                              
@@ -349,7 +349,7 @@
                                                                 class="form-control"
                                                                 id="inputName"
                                                                 value="{{
-                                                            $eleve->created_at}}"
+                                                            $eleve->created_at->format('d M. Y ')}}"
                                                         readonly>
                                                         </div>
                                                     </div>
