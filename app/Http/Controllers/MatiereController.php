@@ -213,4 +213,18 @@ class MatiereController extends AppBaseController
 
         return redirect(route('matieres.index'));
     }
+
+    public function DynamicLevel(Request $request){
+        $classes = Classe::
+        select('classes.*')
+        ->join('assignations','assignations.class_id','=','classes.id')
+        ->where('assignations.prof_id',$request->prof_id)
+        ->get();
+
+        // $course_id = $request->get('course_id');
+
+        // $levels = Level::where('course_id', '=',$course_id)->get();
+       
+        return  Response::json($classes);
+    }
 }

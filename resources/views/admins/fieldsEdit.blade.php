@@ -19,11 +19,11 @@
     <i class="input-icon" id="messageError"></i>
 </div>
 
-<!-- Password Field -->
+{{-- <!-- Password Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('password', 'Mot de passe:') !!}
     {!! Form::password('password', ['class' => 'form-control', 'required']) !!}
-</div>
+</div> --}}
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

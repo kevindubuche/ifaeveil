@@ -7,7 +7,7 @@
         <th>Prenom</th>
         <th>Classe</th>
         <th>Sexe</th>
-        <th>Tel</th>
+        <th>Telephone</th>
         <th>Religion</th>
         <th>Date Naissance</th>
         <th>Date Admission</th>

@@ -419,6 +419,22 @@ readonly>
 </div>
                                   @endif
                                   @if(Auth::user()->role == 2)
+                                  <div class="form-group ">
+                                
+                                    <label for="inputName"
+                                    class="col-sm-3 control-label">Classes </label>
+                                  <div class="col-sm-9">
+                                    @foreach ($user->classes($user->user_id) as $classe)
+                                    <input type="email"
+                                    class="form-control"
+                                    id="inputName"
+                                  value="{{$classe->nom}}"
+                                   readonly>  
+                                    @endforeach
+                                     
+                                  </div>
+                                  </div>
+
                                 <div class="form-group ">
                                         <label for="inputName"
                                         class="col-sm-3 control-label">Statut matrimonial</label>

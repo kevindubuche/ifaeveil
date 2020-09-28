@@ -164,7 +164,7 @@ class AdminController extends AppBaseController
             'nom' => 'required|nullable|string|max:45',
             'prenom' => 'required|nullable|string|max:45',
             'username' => 'required|nullable|string|max:45',
-            'password' => 'required|nullable|string|max:20',
+            // 'password' => 'required|nullable|string|max:20',
         ]);
         if ($validator->fails()) {
             Session::flash('error', $validator->messages()->first());
@@ -187,7 +187,7 @@ class AdminController extends AppBaseController
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'username' => $request->username,
-            'password' =>   Hash::make( $request->password)     
+            // 'password' =>   Hash::make( $request->password)     
             
         );
         User::findOrFail($admin->user_id)->update($user);

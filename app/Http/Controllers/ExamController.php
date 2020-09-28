@@ -47,13 +47,15 @@ class ExamController extends AppBaseController
            //teachers SEE only his Lecons
            else  if($user->role == 2 ){
             // dd('role 2');
-            $exams = Exam::where(['creer_par'=> $user->id])->get();
+            $exams = Exam::where(['creer_par'=> $user->id, 'publier'=>'1'])->get();
             return view('exams.index')
             ->with('exams', $exams);
         }
         else  {
             $student = Eleve::where(['user_id'=> $user->id])->first();
-            $exams = Exam::join('matieres','matieres.id','=','exams.id')//qui sont dans l'horaire de l'etudiant
+            $exams = Exam::
+            select('exams.*')
+            ->join('matieres','matieres.id','=','exams.id')//qui sont dans l'horaire de l'etudiant
             ->join('classes','classes.id','=','matieres.class_id')
             ->where(['classes.id'=>$student->class_id,'exams.publier'=>'1' ])
            ->get();

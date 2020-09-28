@@ -84,7 +84,9 @@ class MessageController extends AppBaseController
         // dd('role default');
         $student = Eleve::where(['user_id'=> $user->id])->first();
         //  dd($student->first_name);
-        $actuTeacher = Message::join('messages_assignations','messages_assignations.message_id','=','messages.id')//qui sont dans l'horaire de l'etudiant
+        $actuTeacher = Message::
+        select('messages.*')
+        ->join('messages_assignations','messages_assignations.message_id','=','messages.id')//qui sont dans l'horaire de l'etudiant
         ->where('class_id',$student->class_id)
         ->select('messages.*')
         ->get();

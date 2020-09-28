@@ -21,7 +21,7 @@
                 <td>{{ $soumission->description }}</td> 
                 <td>{{ $soumission->created_at->format('D. m Y') }}</td>
                 <td>
-                    <a href="/soumission_files/{{$soumission->filename}}" target='_blank'>   
+                    <a href="{{asset('soumission_files/'.$soumission->filename)}}" target='_blank'>   
                             <button  >Afficher</button>
                     </a>
                 </td>

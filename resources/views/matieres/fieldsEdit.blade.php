@@ -28,3 +28,23 @@
     {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
     <a href="{{ route('matieres.index') }}" class="btn btn-default">Annuler</a>
 </div>
+
+@push('scripts')
+    <script>
+   
+        $('#prof_id').on('change', function(e){
+            console.log(e);
+            var prof_id = e.target.value;
+            // alert(prof_id);
+            $('#class_id').empty();
+            //get related levels to the specific course with ajax
+            $.get('/dynamicLevel?prof_id=' + prof_id, function(data){
+                // alert(data[0]); 
+
+                $.each(data, function(index, clas){
+                    $('#class_id').append('<option value="'+clas.id+'">'+clas.nom+'</option>')
+                });
+            });
+        });
+    </script>
+@endpush

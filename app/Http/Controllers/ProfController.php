@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Prof;
 use Illuminate\Support\Facades\Validator;
 use Session;
+use App\Models\Classe;
 
 
 class ProfController extends AppBaseController
@@ -157,7 +158,7 @@ class ProfController extends AppBaseController
     public function show($id)
     {
         $prof = $this->profRepository->find($id);
-
+         
         if (empty($prof)) {
             Flash::error('Prof not found');
 
@@ -232,7 +233,8 @@ class ProfController extends AppBaseController
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'username' => $request->username,
-            'password' =>   Hash::make( $request->password)     
+            //yo pa chanje password la, yo chanje password nan module ki dedier a cela
+           // 'password' =>   Hash::make( $request->password)     
             
         );
         User::findOrFail($prof->user_id)->update($user);

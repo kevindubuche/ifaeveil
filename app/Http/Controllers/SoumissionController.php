@@ -14,7 +14,7 @@ use App\Models\Soumission;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 use Session;
-
+use DB;
 class SoumissionController extends AppBaseController
 {
     /** @var  SoumissionRepository */
@@ -48,11 +48,21 @@ class SoumissionController extends AppBaseController
             ->with('soumissions', $soumissions);
         }
         else if ($user->role == 2 ) {
-          $soumissions = Soumission::join('exams','exams.id','=','soumissions.exam_id')
-            ->where('exams.creer_par',$user->id)
-           ->get();
+        //   $soumissions = Soumission::join('exams','exams.id','=','soumissions.exam_id')
+        //     ->where('exams.creer_par',$user->id)
+        //    ->get();
+
+        $soumissions = Soumission::
+    select('soumissions.*')
+    ->join('exams', 'exams.id', '=', 'soumissions.exam_id')
+    ->where('exams.creer_par', $user->id)
+    ->get();
+
            return view('soumissions.index')
            ->with('soumissions', $soumissions);
+
+               
+                        
         }
 
     }

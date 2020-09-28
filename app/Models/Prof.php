@@ -114,6 +114,15 @@ class Prof extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class, 'user_id');
+        return $this->belongsTo(\App\User::class, 'user_id');
     }
+
+    public function classes($prof_id)
+    {
+        return Classe::join('assignations','assignations.class_id','=','classes.id')
+        ->where('assignations.prof_id',$prof_id)
+        ->get();
+    }
+
+    
 }

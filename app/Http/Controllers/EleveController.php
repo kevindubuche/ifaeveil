@@ -245,7 +245,8 @@ class EleveController extends AppBaseController
                     'nom' => $request->nom,
                     'prenom' => $request->prenom,
                     'username' => $request->username,
-                    'password' =>   Hash::make( $request->password)     
+                    //yo pa update password la
+                  //  'password' =>   Hash::make( $request->password)     
                     
                 );
                 User::findOrFail($eleve->user_id)->update($user);

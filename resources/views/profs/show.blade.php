@@ -66,7 +66,7 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                <b>Email</b> <a class="pull-right">{{$prof->username}}</a>
+                <b>Nom d'utilisateur</b> <a class="pull-right">{{$prof->username}}</a>
                 </li>
                 <li class="list-group-item">
                   <b>Telephone</b> <a class="pull-right">{{$prof->tel}}</a>
@@ -172,6 +172,21 @@
                                     </div>
                                 </div>
                                 
+                                <div class="form-group ">
+                                
+                                  <label for="inputName"
+                                  class="col-sm-3 control-label">Classes </label>
+                                <div class="col-sm-9">
+                                  @foreach ($prof->classes($prof->user_id) as $classe)
+                                  <input type="email"
+                                  class="form-control"
+                                  id="inputName"
+                                value="{{$classe->nom}}"
+                                 readonly>  
+                                  @endforeach
+                                   
+                                </div>
+                                </div>
 
                                 <div class="form-group ">
                                     

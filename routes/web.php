@@ -46,6 +46,9 @@ Route::group(['middleware' => ['ifLogin','auth']], function(){
 
     Route::resource('matieres', 'MatiereController');
 
+    Route::get('/dynamicLevel', 'MatiereController@DynamicLevel'); 
+
+
     Route::resource('lecons', 'LeconController');
 
     Route::get('/profile/{id}', 'AllUserController@profile')->name('profile');
