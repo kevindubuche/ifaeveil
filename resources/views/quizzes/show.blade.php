@@ -131,9 +131,9 @@
                    for(var i in resultat.question)
                                { 
                                 text+='<tr  style="cursor:pointer;">'
-                                text+='   <td > <p>' + resultat.question[i].content +'</p><fieldset id="'+resultat.question[i].id_question.toString()+'"> '
+                                text+='   <td > <p> ' + resultat.question[i].content +'</p><fieldset id="'+resultat.question[i].id_question.toString()+'"> '
                                 for(var j in resultat.question[i].proposition) {
-                                    text+= '<label id="'+resultat.question[i].proposition[j].content_prop+resultat.question[i].id_question +'"><input type="checkbox" name="'+j+ resultat.question[i].id_question.toString() +'"  value="'+resultat.question[i].proposition[j].content_prop+'"/>' + resultat.question[i].proposition[j].content_prop +' </label> </br>'    
+                                    text+= '<label id="'+resultat.question[i].proposition[j].content_prop+resultat.question[i].id_question +'"><input type="checkbox" name="'+j+ resultat.question[i].id_question.toString() +'"  value="'+resultat.question[i].proposition[j].content_prop+'"/> &emsp;' + resultat.question[i].proposition[j].content_prop + '  </label> </br>'    
                                console.log('iportant valeur text : '+resultat.question[i].proposition[j].content_prop+resultat.question[i].id_question )
                                 }  
                                 text+='</fieldset> '  
@@ -258,7 +258,7 @@
                                 ///console.log('si repons sa:  '+lesReponses[index][j].explication+'coresponn a sa: '+table.$('#'+unID).find('input')[i].value);
                                 ///console.log('men valeur id a :  '+ table.$('#'+unID).find('input')[i].value);
                                 console.log('MWEN EN VERT CAUSE: INPUT MW GEN VALER:'+table.$('#'+unID).find('input')[i].value+' E BONNE REP LA SE: '+lesReponses[index][j].explication)
-                                    table.$('#'+lesReponses[index][j].explication+lesReponses[index][j].id_question).css('color','green');
+                                    table.$('#'+lesReponses[index][j].explication+lesReponses[index][j].id_question).css('background-color','green');
                                     console.log('men ki ID text map eseye met en vert la: '+lesReponses[index][j].explication+lesReponses[index][j].id_question)
                              break; 
                             }

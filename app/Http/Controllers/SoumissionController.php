@@ -48,8 +48,8 @@ class SoumissionController extends AppBaseController
             ->with('soumissions', $soumissions);
         }
         else if ($user->role == 2 ) {
-          $soumissions = Soumission::join('exams','exams.exam_id','=','soumissions.exam_id')
-            ->where('exams.created_by',$user->id)
+          $soumissions = Soumission::join('exams','exams.id','=','soumissions.exam_id')
+            ->where('exams.creer_par',$user->id)
            ->get();
            return view('soumissions.index')
            ->with('soumissions', $soumissions);
