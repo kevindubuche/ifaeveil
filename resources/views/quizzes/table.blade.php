@@ -8,7 +8,7 @@
         <th>Nombre de questions</th>
         <th>Duree</th>
         <th>Categorie</th>
-        <th>Date</th>
+        <th>Date (minutes)</th>
                 <th >Action</th>
             </tr>
         </thead>

@@ -20,11 +20,11 @@
                    /></td>
                 <td>{{ $matiere->nom }}</td>
             <td>{{ $matiere->class->nom }}</td>
-            <td>{{ $matiere->prof($matiere->prof_id)->nom }}</td>
+            <td>{{ $matiere->prof($matiere->prof_id)->nom }} {{ $matiere->prof($matiere->prof_id)->prenom }}</td>
                 <td>
                     {!! Form::open(['route' => ['matieres.destroy', $matiere->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('matieres.show', [$matiere->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="{{ route('matieres.show', [$matiere->id]) }}" class='btn btn-primary btn-md'><i >Les cours</i></a>
                         @if(Auth::user()->role == 1)
                         <a href="{{ route('matieres.edit', [$matiere->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Confirmer')"]) !!}

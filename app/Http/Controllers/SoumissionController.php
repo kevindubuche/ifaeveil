@@ -108,9 +108,8 @@ class SoumissionController extends AppBaseController
           $filename = time().'.'.$extension;
           $fullPath = $filename;
   
-          $request->file('filename')->move(
-              base_path() . '/public/soumission_files/', $filename
-          );
+         
+          $request->file('filename')->move(public_path('soumission_files'), $filename);
    
           
         $soumission = new Soumission;
@@ -225,7 +224,7 @@ class SoumissionController extends AppBaseController
         }
 
         Soumission::where('id', $id)->forceDelete();
-
+        File::delete(public_path().'/soumission_files/'.$soumission->filename);
         Flash::success('SUCCES !');
 
 

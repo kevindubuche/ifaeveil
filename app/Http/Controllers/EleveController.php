@@ -310,6 +310,9 @@ class EleveController extends AppBaseController
         }
 
         User::where('id', $eleve->user_id)->forceDelete();
+        if( $eleve->image !='defaultAvatar.png' ){
+                File::delete(public_path().'/user_images/'.$eleve->image);
+          }
 
         Flash::success('SUCCES !');
         return redirect(route('eleves.index'));

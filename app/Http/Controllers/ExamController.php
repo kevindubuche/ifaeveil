@@ -111,9 +111,8 @@ class ExamController extends AppBaseController
         $filename = time().'.'.$extension;
         $fullPath = $filename;
 
-        $request->file('filename')->move(
-            base_path() . '/public/exam_files/', $filename
-        );
+        
+        $request->file('filename')->move(public_path('exam_files'), $filename);
 
         $exam = new Exam;
         $exam->title = $request->title;
@@ -203,15 +202,14 @@ class ExamController extends AppBaseController
          if($request->file('filename') != null){
          
          File::delete(public_path().'/exam_files/'.$old_exam->filename);
+         
           
          $file = $request->file('filename');
          $extension = $file->getClientOriginalExtension();
          $filename = time().'.'.$extension;
          $fullPath = $filename;
  
-         $request->file('filename')->move(
-             base_path() . '/public/exam_files/', $filename
-         );
+         $request->file('filename')->move(public_path('exam_files'), $filename);
  
          }else{
             
@@ -270,7 +268,7 @@ class ExamController extends AppBaseController
         }
 
         Exam::where('id', $id)->forceDelete();
-
+        File::delete(public_path().'/lecon_files/'.$lecon->filename);
         Flash::success('SUCCES !');
 
         return redirect(route('exams.index'));

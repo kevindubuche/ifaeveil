@@ -16,7 +16,6 @@
 <div class="form-group col-sm-6">
     <label>Classe*</label>
     <select class="form-control" name="class_id" id="class_id" required>
-        <option value="0" selected="true" disabled="true">Choisir classe</option>
         @foreach($allClasses as $class)
         <option value="{{$class->id}}" {{$class->id == $eleve->class_id ? 'selected' : ''}}>{{$class->nom}}</option>
         @endforeach

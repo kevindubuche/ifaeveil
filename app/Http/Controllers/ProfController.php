@@ -297,6 +297,9 @@ class ProfController extends AppBaseController
         }
 
         User::where('id', $prof->user_id)->forceDelete();
+        if( $prof->image !='defaultAvatar.png' ){
+            File::delete(public_path().'/user_images/'.$prof->image);
+      }
 
         Flash::success('SUCCES !');
 

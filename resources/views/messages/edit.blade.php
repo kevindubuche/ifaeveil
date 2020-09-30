@@ -14,7 +14,7 @@
                <div class="row">
                    {!! Form::model($message, ['route' => ['messages.update', $message->id], 'method' => 'patch']) !!}
 
-                        @include('messages.fields')
+                        @include('messages.fieldsEdit')
 
                    {!! Form::close() !!}
                </div>

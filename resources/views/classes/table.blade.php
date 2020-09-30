@@ -3,7 +3,7 @@
        
         <thead>
             <tr>
-                <th>Nom</th>
+                <th>Nom de la classe</th>
                 <th >Action</th>
             </tr>
         </thead>

@@ -210,7 +210,7 @@ class AllUserController extends AppBaseController
      public function userUpdatePassword(Request $request){
         $validator = Validator::make($request->all(), [
             'old_password' => 'required|nullable|string|max:45',
-            'password' => 'required|nullable|string|max:45'
+            'new_password' => 'required|nullable|string|max:45'
         ]);
         if ($validator->fails()) {
             Session::flash('error', $validator->messages()->first());

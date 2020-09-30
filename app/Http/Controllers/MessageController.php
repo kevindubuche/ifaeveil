@@ -205,15 +205,18 @@ class MessageController extends AppBaseController
 
         if(auth()->user()->role == 1){
             $actus = $this->messageRepository->find($id);
-          $classes = Classe::all();
-    
             if (empty($actus)) {
                 Flash::error('Message not found');
     
                 return redirect(route('messages.index'));
             }
+           
+          $classes = Classe::all();
+          $anciennesAssignations=Messages_assignation::where('message_id',$actus->id)->get();
     
-            return view('messages.edit',compact('classes'))->with('message', $actus);
+           
+    
+            return view('messages.edit',compact('classes','anciennesAssignations'))->with('message', $actus);
         }
         return redirect()->back();
 

@@ -74,7 +74,6 @@
                 <li class="list-group-item">
                   <b>Date d'entree en service</b> <a class="pull-right"> 
     {{ $prof->date_entree_en_service }}
-                    ans
                      </a>
                 </li>
               </ul>

@@ -81,9 +81,7 @@ class LeconController extends AppBaseController
             $filename = time().'.'.$extension;
             $fullPath = $filename;
     
-            $request->file('filename')->move(
-                base_path() . '/public/lecon_files/', $filename
-            );
+            $request->file('filename')->move(public_path('lecon_files'), $filename);
 
         }
         $matches = array();
@@ -197,9 +195,8 @@ class LeconController extends AppBaseController
                $filename = time().'.'.$extension;
                $fullPath = $filename;
        
-               $request->file('filename')->move(
-                   base_path() . '/public/lecon_files/', $filename
-               );
+               
+               $request->file('filename')->move(public_path('lecon_files'), $filename);
    
            }
         
@@ -255,7 +252,8 @@ class LeconController extends AppBaseController
         }
 
         Lecon::where('id', $id)->forceDelete();
-
+            File::delete(public_path().'/lecon_files/'.$lecon->filename);
+   
         Flash::success('SUCCES !');
 
         return redirect()->back();
