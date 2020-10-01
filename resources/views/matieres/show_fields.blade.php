@@ -30,7 +30,7 @@
             </td>
             <td>{{ $lecon->nom }}</td>
             <td>{{ $lecon->description }}</td>
-            <td>{{ $lecon->created_at->format('D. m Y') }}</td>
+            <td>{{ $lecon->created_at->format('d M. Y') }}</td>
             <td>{{ $lecon->GetUser($lecon->creer_par)->nom }} {{ $lecon->GetUser($lecon->creer_par)->prenom }}</td>
            
             <td>

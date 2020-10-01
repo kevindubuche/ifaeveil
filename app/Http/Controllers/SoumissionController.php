@@ -12,6 +12,7 @@ use Response;
 use App\Models\Exam;
 use App\Models\Soumission;
 use App\User;
+use App\Models\Eleve;
 use Illuminate\Support\Facades\Validator;
 use Session;
 use DB;
@@ -74,9 +75,21 @@ class SoumissionController extends AppBaseController
      */
     public function create()
     {
-        $exams = Exam::all();
+        if(auth()->user()->role == 3){
+        //$exams = Exam::all();
+        $student = Eleve::where(['user_id'=> auth()->user()->id])->first();
+        $exams = Exam::
+        select('exams.*')
+        ->join('matieres','matieres.id','=','exams.matiere_id')
+        ->join('classes','classes.id','=','matieres.class_id')
+        ->where(['classes.id'=>$student->class_id,'exams.publier'=>'1' ])
+       ->get();
 
         return view('soumissions.create',compact('exams'));
+    }else{
+        Flash::error('Disponoble seulement pour eleves !');
+        return redirect(route('soumissions.index'));
+    }
     }
 
     /**
@@ -90,10 +103,10 @@ class SoumissionController extends AppBaseController
     {
         if(auth()->user()->role == 3){
         $validator = Validator::make($request->all(), [
-            'exam_id' => 'nullable|integer',
+            'exam_id' => 'required|nullable|integer',
             'description' => 'nullable|string|max:255',
-            'filename' => 'nullable',
-            'eleve_id' => 'nullable',
+            'filename' => 'required|nullable',
+            'eleve_id' => 'required|nullable',
         ]);
         if ($validator->fails()) {
             Session::flash('error', $validator->messages()->first());

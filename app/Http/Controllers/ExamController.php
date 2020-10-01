@@ -52,10 +52,11 @@ class ExamController extends AppBaseController
             ->with('exams', $exams);
         }
         else  {
+           
             $student = Eleve::where(['user_id'=> $user->id])->first();
             $exams = Exam::
             select('exams.*')
-            ->join('matieres','matieres.id','=','exams.id')//qui sont dans l'horaire de l'etudiant
+            ->join('matieres','matieres.id','=','exams.matiere_id')
             ->join('classes','classes.id','=','matieres.class_id')
             ->where(['classes.id'=>$student->class_id,'exams.publier'=>'1' ])
            ->get();
@@ -124,7 +125,7 @@ class ExamController extends AppBaseController
         $exam->save();
         // $exam = $this->examRepository->create($input);
 
-        Flash::success('SUCCES !');
+        Flash::success('SUCCES ! L\'examen est soumis a l\'administrateur pour verification.');
 
         return redirect(route('exams.index'));
     }catch(\Illuminate\Database\QueryException $e){

@@ -68,7 +68,7 @@ class Lecon extends Model
      * @var array
      */
     public static $rules = [
-        'nom' => 'nullable|string|max:45',
+        'nom' => 'nullable|string|max:255',
         'matiere_id' => 'nullable|integer',
         'description' => 'nullable|string',
         'contenu' => 'nullable|string',

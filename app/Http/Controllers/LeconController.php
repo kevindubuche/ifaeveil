@@ -59,7 +59,7 @@ class LeconController extends AppBaseController
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|nullable|string|max:45',
+            'nom' => 'required|nullable|string|max:255',
             'matiere_id' => 'required|nullable|integer',
             'description' => 'nullable|string',
             'contenu' => 'nullable|string',
@@ -104,7 +104,7 @@ class LeconController extends AppBaseController
           $lecon->save();
           
   
-          Flash::success('SUCCES ! Le cours soumis a l\'administrateur pour verification.');
+          Flash::success('SUCCES ! Le cours est soumis a l\'administrateur pour verification.');
         return redirect()->back();
         
         }catch(\Illuminate\Database\QueryException $e){
@@ -165,7 +165,7 @@ class LeconController extends AppBaseController
     public function update($id, Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nom' => 'required|nullable|string|max:45',
+            'nom' => 'required|nullable|string|max:255',
             'matiere_id' => 'required|nullable|integer',
             'description' => 'nullable|string',
             'contenu' => 'nullable|string',

@@ -6,6 +6,7 @@
                 <th>Matiere</th>
         <th>Titre</th>
         <th>Description</th>
+        <th>Classe</th>
         <th>Ajouté par</th>
         <th>Date de création</th>
         <th>Document</th>
@@ -23,6 +24,7 @@
                 <td>{{ $exam->matiere->nom }}</td>
             <td>{{ $exam->title }}</td>
             <td>{{ $exam->description }}</td>
+            <td>{{ $exam->matiere->class->nom }}</td>
             <td>{{ $exam->creerPar->username }}</td>
             <td>{{ $exam->created_at->format('d M. Y') }}</td>
             <td>

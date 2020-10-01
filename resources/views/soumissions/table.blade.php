@@ -7,6 +7,7 @@
         <th>Date de création</th>
         <th>Document</th>
         <th>Ajouté par</th>
+        <th>Classe</th>
         @if(Auth::user()->role== 1)
                 <th >Action</th>
         @endif
@@ -19,13 +20,14 @@
                 <tr>
                     <td>{{ $soumission->exam->title }}</td>
                 <td>{{ $soumission->description }}</td> 
-                <td>{{ $soumission->created_at->format('D. m Y') }}</td>
+                <td>{{ $soumission->created_at->format('d M. Y') }}</td>
                 <td>
                     <a href="{{asset('soumission_files/'.$soumission->filename)}}" target='_blank'>   
                             <button  >Afficher</button>
                     </a>
                 </td>
                 <td>{{ $soumission->eleve($soumission->eleve_id)->nom }} {{ $soumission->eleve($soumission->eleve_id)->prenom }}</td>
+                <td> {{ $soumission->eleve($soumission->eleve_id)->class->nom }}</td>
                 @if(Auth::user()->role == 1)   
                 <td>
                         {!! Form::open(['route' => ['soumissions.destroy', $soumission->id], 'method' => 'delete']) !!}
