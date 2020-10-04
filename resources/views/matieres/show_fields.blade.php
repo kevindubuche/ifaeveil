@@ -11,7 +11,7 @@
         <th>Ajouté par</th>
         <th>Document</th>
         <th>Vidéo</th>
-        @if (Auth::user()->role == 1)
+        @if (Auth::user()->role != 3)
             <th >Publié</th>
         @endif
         @if (Auth::user()->role != 3)
@@ -50,7 +50,7 @@
             @else
             <td > Pas de vidéo</td>
             @endif
-            @if (Auth::user()->role == 1)
+            @if (Auth::user()->role != 3)
             <td >
                 @if($lecon->publier == 1)
                 <span class=" btn btn-success btn-sm glyphicon glyphicon-ok" ></span>

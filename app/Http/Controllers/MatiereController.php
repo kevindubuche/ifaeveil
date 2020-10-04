@@ -114,7 +114,7 @@ class MatiereController extends AppBaseController
     {
         $matiere = $this->matiereRepository->find($id);
       
-        if(User::find(auth()->user()->role != 1)){
+        if(User::find(auth()->user()->role == 3)){
             $lecons = Lecon::where(['matiere_id'=>$id, 'publier'=>'1'])->get();
         }
         else{

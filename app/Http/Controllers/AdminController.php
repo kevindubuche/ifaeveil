@@ -88,7 +88,7 @@ class AdminController extends AppBaseController
         $user_id =DB::getPdo()->lastInsertId(); 
         if($save){
             $input['user_id'] =  $user_id;
-            $admin = $this->adminRepository->create($input);
+            $admin = $this->adminRepository->create($request->except(['password']));
 
             Flash::success('SUCCES !');
     

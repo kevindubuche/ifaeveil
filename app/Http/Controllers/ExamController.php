@@ -269,7 +269,7 @@ class ExamController extends AppBaseController
         }
 
         Exam::where('id', $id)->forceDelete();
-        File::delete(public_path().'/lecon_files/'.$lecon->filename);
+        File::delete(public_path().'/exam_files/'.$lecon->filename);
         Flash::success('SUCCES !');
 
         return redirect(route('exams.index'));

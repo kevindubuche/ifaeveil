@@ -53,7 +53,7 @@ class MessageController extends AppBaseController
         }
    /// #######  end usefull function
 
-    $actuses = $this->messageRepository->all();
+    $actuses = Message::orderBy('created_at', 'asc')->get();
 
     $user = User::find(auth()->user()->id);
           //ADM SEE ALL ACTU
@@ -65,16 +65,22 @@ class MessageController extends AppBaseController
      else  if($user->role == 2 ){
        
         // dd('role 2');
-        $actuAdm = collect();
-        foreach($actuses as $actu){
-            if(IsAdm($actu->created_by)){
-                $actuAdm->push($actu);
-            }
-        }
+        // $actuAdm = collect();
+        // foreach($actuses as $actu){
+        //     if(IsAdm($actu->created_by)){
+        //         $actuAdm->push($actu);
+        //     }
+        // }
      
         
-        $actuTeacher = Message::where(['created_by'=> $user->id])->get();
-        $actuses = $actuAdm->merge($actuTeacher);
+        // $actuTeacher = Message::where(['created_by'=> $user->id])->get();
+        // $actuses = $actuAdm->merge($actuTeacher);
+        $actuses = Message::
+        select('messages.*')
+        ->join('messages_assignations','messages_assignations.message_id','=','messages.id')//qui sont dans l'horaire de l'etudiant
+        ->join('assignations','assignations.class_id','=','messages_assignations.class_id')//qui sont dans l'horaire de l'etudiant
+        ->where('assignations.prof_id',$user->id)
+        ->get();
         return view('messages.index')
         ->with('messages', $actuses);
     }
@@ -121,8 +127,8 @@ class MessageController extends AppBaseController
     {
         $validator = Validator::make($request->all(), [
             'created_by' => 'required|nullable',
-            'title' => 'required|nullable|string|max:45',
-            'body' => 'required|nullable|string',
+            'title' => 'required|nullable|string|max:125',
+            'body' => 'required|nullable|string|max:255',
         ]);
         if ($validator->fails()) {
             Session::flash('error', $validator->messages()->first());
@@ -234,7 +240,15 @@ class MessageController extends AppBaseController
      */
     public function update($id, UpdateMessageRequest $request)
     {
-
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|nullable|string|max:125',
+            'body' => 'required|nullable|string|max:255',
+        ]);
+        if ($validator->fails()) {
+            Session::flash('error', $validator->messages()->first());
+            Flash::error( $validator->messages()->first());
+            return redirect()->back()->withInput();
+       }
         
         $input = $request->all();
 

@@ -103,6 +103,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+              @if(Auth::user()->role == 2)
               <strong><i class="fa fa-user margin-r-5"></i>Statut matrimonial</strong>
 
               <p class="text-muted">
@@ -118,9 +119,9 @@
                      Veuf(ve) 
                     @endif
               </p>
-
+            
               <hr>
-
+            @endif
               <strong><i class="fa fa-map-marker margin-r-5"></i> Adresse</strong>
 
               <p class="text-muted">{{$user->adresse}}</p>
@@ -181,7 +182,7 @@
                     <label for="inputName" class="col-sm-2 control-label">Ancien mot de passe</label>
 
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="old_password" id="oldpassword" required placeholder="Entrer ancien mot de passe">
+                      <input type="password" class="form-control" name="old_password" id="oldpassword" required placeholder="Entrer ancien mot de passe">
                       <i class="input-icon" id="messageError"></i>
                     </div>
                   </div>
@@ -189,7 +190,7 @@
                     <label for="inputEmail" class="col-sm-2 control-label">Nouveau mot de passe</label>
 
                     <div class="col-sm-10">
-                      <input type="text " class="form-control" name="new_password"id="newpassword" required placeholder="Entrer nouveau mot de passe">
+                      <input type="password" class="form-control" name="new_password"id="newpassword" required placeholder="Entrer nouveau mot de passe">
                     </div>
                   </div>
          
