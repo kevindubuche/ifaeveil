@@ -33,6 +33,11 @@
       @endforeach
   </select>
 </div> --}}
+<div class="form-group col-sm-6">
+   
+    <a href="https://docs.google.com/forms/u/0/" class='btn btn-default' target=”_blank” ><i>AJOUTER LES QUESTIONS</i></a>
+</div>
+
 <!-- Lien Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('lien', 'Lien du quiz:') !!}
