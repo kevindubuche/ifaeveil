@@ -80,9 +80,11 @@ class QuizController extends AppBaseController
         $validator = Validator::make($request->all(), [
             'titre' => 'nullable|string|max:255',
             'class_id' => 'nullable|integer',
-            'duree' => 'nullable|integer',
-            'categorie' => 'nullable|string|max:255',
-            'nombre_questions' => 'nullable|integer',
+            // 'duree' => 'nullable|integer',
+            // 'categorie' => 'nullable|string|max:255',
+            // 'nombre_questions' => 'nullable|integer',
+            'lienAdm' => 'nullable|string',
+            'lien' => 'nullable|string'
         ]);
         if ($validator->fails()) {
             Session::flash('error', $validator->messages()->first());
@@ -91,10 +93,10 @@ class QuizController extends AppBaseController
        }
        try{
         $input = $request->all();
-        if((int)$input['nombre_questions'] > Quiz_question::where('categorie',$input['categorie'])->count()){
-            Flash::error('Pas assez de questions de cette categorie dans la base !');
-            return redirect()->back();
-        }
+        // if((int)$input['nombre_questions'] > Quiz_question::where('categorie',$input['categorie'])->count()){
+        //     Flash::error('Pas assez de questions de cette categorie dans la base !');
+        //     return redirect()->back();
+        // }
 
         $quiz = $this->quizRepository->create($input);
 

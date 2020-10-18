@@ -36,7 +36,9 @@ class Quiz extends Model
         'class_id',
         'duree',
         'categorie',
-        'nombre_questions'
+        'nombre_questions',
+        'lien',
+        'lienAdm'
     ];
 
     /**
@@ -48,9 +50,11 @@ class Quiz extends Model
         'id' => 'integer',
         'titre' => 'string',
         'class_id' => 'integer',
-        'duree' => 'integer',
-        'categorie' => 'string',
-        'nombre_questions' => 'integer'
+        // 'duree' => 'integer',
+        // 'categorie' => 'string',
+        // 'nombre_questions' => 'integer',
+        'lienAdm' => 'string',
+        'lien' => 'string'
     ];
 
     /**
@@ -61,9 +65,11 @@ class Quiz extends Model
     public static $rules = [
         'titre' => 'nullable|string|max:255',
         'class_id' => 'nullable|integer',
-        'duree' => 'nullable|integer',
-        'categorie' => 'nullable|string|max:255',
-        'nombre_questions' => 'nullable|integer',
+        // 'duree' => 'nullable|integer',
+        // 'categorie' => 'nullable|string|max:255',
+        // 'nombre_questions' => 'nullable|integer',
+        'lienAdm' => 'nullable|string',
+        'lien' => 'nullable|string',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
         'deleted_at' => 'nullable'

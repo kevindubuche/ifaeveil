@@ -13,7 +13,7 @@
       @endforeach
   </select>
 </div>
-<!-- Teacher Id Field -->
+{{-- <!-- Teacher Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('nombre_questions', 'Nombre de questions:') !!}
     {!! Form::number('nombre_questions', null, ['class' => 'form-control', 'required']) !!}
@@ -32,6 +32,17 @@
       <option value="{{$cat->categorie}}">{{$cat->categorie}}</option>
       @endforeach
   </select>
+</div> --}}
+<!-- Lien Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('lien', 'Lien du quiz:') !!}
+    {!! Form::text('lien', null, ['class' => 'form-control', 'required']) !!}
+</div>
+
+<!-- Lien Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('lienAdm', 'Lien pour modification du quiz:') !!}
+    {!! Form::text('lienAdm', null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <!-- Submit Field -->

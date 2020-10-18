@@ -87,6 +87,11 @@
 
 
 @if(Auth::user()->role !=2)
+<li class="{{ Request::is('quizzes*') ? 'active' : '' }}">
+    <a href="{{ route('quizzes.index') }}"><i class="fa fa-question"></i><span>Quiz</span></a>
+</li>
+
+{{-- 
 <li class="treeview">
     <a href="#">
         <i class=" fa fa-briefcase"></i><span>Quiz</span>
@@ -102,9 +107,6 @@
 @endif
 
 
-<li class="{{ Request::is('quizzes*') ? 'active' : '' }}">
-    <a href="{{ route('quizzes.index') }}"><i class="fa fa-edit"></i><span>Quiz</span></a>
-</li>
 
 
 <li class="{{ Request::is('quiznotes*') ? 'active' : '' }}">
@@ -112,5 +114,5 @@
 </li>
 
 </ul>
-</li>
+</li> --}}
 @endif
