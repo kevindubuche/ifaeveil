@@ -115,6 +115,7 @@
 
 
 @push('scripts')
+
 <script>
 
 //Bootstrap 4 + daemonite material UI + Summernote wysiwyg text editor
@@ -122,7 +123,7 @@
 
 $('#my-summernote').summernote({
   minHeight: 100,
-  placeholder: 'Write here ...',
+  placeholder: 'Ecrivez ici ...',
   focus: false,
   airMode: false,
   fontNames: ['Roboto', 'Calibri', 'Times New Roman', 'Arial'],
