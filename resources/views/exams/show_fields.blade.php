@@ -9,7 +9,7 @@
 <!-- Description Field -->
 <div class="form-group">
     {!! Form::label('description', 'Description:') !!}
-    <p>{{ $exam->description }}</p>
+    {!! $exam->description!!}
 </div>
 
 <!-- Class Id Field -->

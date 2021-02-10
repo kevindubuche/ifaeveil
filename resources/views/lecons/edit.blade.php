@@ -42,7 +42,7 @@
 
 <div class="form-group col-md-12">
   <label>Importer un document</label>
-<input type="file" name="filename" id="filename" accept="[everything but .exe and .app and .mp4 and .avi]">
+<input type="file" name="filename" id="filename" accept="[everything but .exe and .app and .mp4 and .avi]"> (Max:2MB)
 </div>
 
 <div class="form-group col-md-12 ">

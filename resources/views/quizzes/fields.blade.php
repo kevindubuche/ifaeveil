@@ -40,13 +40,13 @@
 
 <!-- Lien Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('lien', 'Lien du quiz:') !!}
+    {!! Form::label('lien', 'Lien du quiz (visible pour les eleves):') !!}
     {!! Form::text('lien', null, ['class' => 'form-control', 'required']) !!}
 </div>
 
 <!-- Lien Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('lienAdm', 'Lien pour modification du quiz:') !!}
+    {!! Form::label('lienAdm', 'Lien pour modification du quiz (visible pour l\'administrateur):') !!}
     {!! Form::text('lienAdm', null, ['class' => 'form-control', 'required']) !!}
 </div>
 

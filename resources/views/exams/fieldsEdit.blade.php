@@ -21,10 +21,16 @@
 </div>
 
 <!-- Description Field -->
-<div class="form-group col-sm-12 col-lg-12">
+{{-- <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('description', 'Description:') !!}
     {!! Form::textarea('description', $exam->description, ['class' => 'form-control']) !!}
+</div> --}}
+
+<div class="form-group col-md-12 ">
+    <label>Contenu</label>
+    <textarea id="my-summernote" name="description">{!! $exam->description !!}</textarea>
 </div>
+  
 
 <div class="form-group col-sm-12 col-lg-12">
 <input type="file" name="filename" id="filename" >
@@ -74,6 +80,47 @@
 
 
 
+
+        @push('scripts')
+
+        <script>
+        
+        //Bootstrap 4 + daemonite material UI + Summernote wysiwyg text editor
+        //doc : https://github.com/summernote/summernote
+        
+        $('#my-summernote').summernote({
+          minHeight: 100,
+          placeholder: 'Ecrivez ici ...',
+          focus: false,
+          airMode: false,
+          fontNames: ['Roboto', 'Calibri', 'Times New Roman', 'Arial'],
+          fontNamesIgnoreCheck: ['Roboto', 'Calibri'],
+          dialogsInBody: true,
+          dialogsFade: true,
+          disableDragAndDrop: false,
+          toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['para', ['style', 'ul', 'ol', 'paragraph']],
+            ['fontsize', ['fontsize']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['height', ['height']],
+            ['misc', ['undo', 'redo', 'print', 'help', 'fullscreen']]
+          ],
+          popover: {
+            air: [
+              ['color', ['color']],
+              ['font', ['bold', 'underline', 'clear']]
+            ]
+          },
+          print: {
+            //'stylesheetUrl': 'url_of_stylesheet_for_printing'
+          }
+        });
+        $('#my-summernote2').summernote({airMode: false,placeholder:'Try the airmode'});
+        
+        </script>
+        @endpush
 
 
 

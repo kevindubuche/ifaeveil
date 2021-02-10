@@ -36,7 +36,7 @@
 
 <div class="form-group ">
   <label>Importer document</label>
-<input type="file" name="filename" id="filename" >
+<input type="file" name="filename" id="filename" >(Max:2MB)
 </div>
 {{-- <button type="button" class="btn btn-primary" >Ajouter une vidéo</button> --}}
 

@@ -5,7 +5,6 @@
             <tr>
                 <th>Matiere</th>
         <th>Titre</th>
-        <th>Description</th>
         <th>Classe</th>
         <th>Ajouté par</th>
         <th>Date de création</th>
@@ -13,9 +12,7 @@
         @if (Auth::user()->role == 1)
         <th >Publié</th>
         @endif
-        @if(Auth::user()->role != 3)
-                <th >Action</th>
-        @endif
+        <th >Action</th>
             </tr>
         </thead>
         <tbody>
@@ -23,14 +20,17 @@
             <tr>
                 <td>{{ $exam->matiere->nom }}</td>
             <td>{{ $exam->title }}</td>
-            <td>{{ $exam->description }}</td>
             <td>{{ $exam->matiere->class->nom }}</td>
             <td>{{ $exam->creerPar->username }}</td>
             <td>{{ $exam->created_at->format('d M. Y') }}</td>
             <td>
+                @if($exam->filename !='')
                 <a href="{{asset('/exam_files/').'/'.$exam->filename}}" target='_blank'>   
-                        <button  >Afficher</button>
+                    <button  >Afficher</button>
                 </a>
+                @else
+                Pas de document
+                @endif
             </td>
             @if (Auth::user()->role == 1)
             <td >
@@ -41,17 +41,20 @@
                 @endif
                  </td>
             @endif      
-            @if(Auth::user()->role != 3)
+          
             <td>
                 {!! Form::open(['route' => ['exams.destroy', $exam->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
+            
                     <a href="{{ route('exams.show', [$exam->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+            @if(Auth::user()->role != 3)
                      <a href="{{ route('exams.edit', [$exam->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                      {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Confirmer')"]) !!}
+            @endif
                 </div>
                 {!! Form::close() !!}
             </td>
-            @endif
+         
             </tr>
         @endforeach
         </tbody>

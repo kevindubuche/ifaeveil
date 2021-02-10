@@ -25,7 +25,7 @@
                 <td>
                     {!! Form::open(['route' => ['quizzes.destroy', $quiz->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('quizzes.show', [$quiz->id]) }}" class='btn btn-primary btn-xs'>Lancer</a>
+                        <a href="{{$quiz->lien}}" class='btn btn-primary btn-xs'>Lancer</a>
                    
                         @if(Auth::user()->role == 1)
                         <a href="{{ route('quizzes.edit', [$quiz->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>

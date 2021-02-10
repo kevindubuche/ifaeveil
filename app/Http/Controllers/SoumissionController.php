@@ -16,6 +16,7 @@ use App\Models\Eleve;
 use Illuminate\Support\Facades\Validator;
 use Session;
 use DB;
+use File;
 class SoumissionController extends AppBaseController
 {
     /** @var  SoumissionRepository */
@@ -113,7 +114,14 @@ class SoumissionController extends AppBaseController
             Flash::error( $validator->messages()->first());
             return redirect()->back()->withInput();
        }
+     
         $input = $request->all();
+          //verifier si soumission de cet eleve pour cet exam existe deja
+       if (Soumission::where(['eleve_id'=> auth()->user()->id, 'exam_id'=>$request->exam_id])->count() > 0) {
+        // Session::flash('error', $validator->messages()->first());
+        Flash::error( 'Soumission déjà enregistrée pour cet examen !');
+        return redirect()->back()->withInput();
+    }
        try{
           //GESTION DU FICHIER
           $file = $request->file('filename');

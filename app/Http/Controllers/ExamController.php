@@ -95,7 +95,7 @@ class ExamController extends AppBaseController
             'matiere_id' => 'required|nullable|integer',
         'title' => 'required|nullable|string|max:45',
         'description' => 'nullable|string',
-        'filename' => 'required',
+        // 'filename' => 'required',
         'creer_par' => 'required|nullable',
         ]);
         if ($validator->fails()) {
@@ -107,6 +107,7 @@ class ExamController extends AppBaseController
         try{
         // dd($input);
         //GESTION DU FICHIER
+        if($request->file('filename')){
         $file = $request->file('filename');
         $extension = $file->getClientOriginalExtension();
         $filename = time().'.'.$extension;
@@ -114,14 +115,19 @@ class ExamController extends AppBaseController
 
         
         $request->file('filename')->move(public_path('exam_files'), $filename);
-
+        }
         $exam = new Exam;
         $exam->title = $request->title;
         $exam->description = $request->description;
         $exam->creer_par = $request->creer_par;
-        $exam->filename = $fullPath;
+        // $exam->filename = $fullPath;
         $exam->matiere_id = $request->matiere_id;
 //  dd($input);
+        if($request->file('filename')){
+            $exam->filename = $fullPath;
+        }else{
+        $exam->filename = "";
+        }
         $exam->save();
         // $exam = $this->examRepository->create($input);
 
@@ -269,7 +275,7 @@ class ExamController extends AppBaseController
         }
 
         Exam::where('id', $id)->forceDelete();
-        File::delete(public_path().'/exam_files/'.$lecon->filename);
+        File::delete(public_path().'/exam_files/'.$exam->filename);
         Flash::success('SUCCES !');
 
         return redirect(route('exams.index'));

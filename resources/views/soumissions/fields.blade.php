@@ -23,11 +23,11 @@
 
 <!-- Filename Field -->
 <div class="form-group col-sm-6">
-    <input type="file" name="filename" id="filename" required>
+    <input type="file" name="filename" id="filename" required> (Max:2MB)
 </div>
 
 <!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+<div class="form-group col-sm-12">            
+    {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary', 'onclick' => "return confirm('Vous ne pourrez plus modifier votre soumission. Confirmer !')"]) !!}
     <a href="{{ route('soumissions.index') }}" class="btn btn-default">Annuler</a>
 </div>
