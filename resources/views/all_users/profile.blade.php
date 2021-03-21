@@ -33,7 +33,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-        <li class="active">Profile de l'utilisateur</li>
+        <li class="active">Profil de l'utilisateur</li>
       </ol>
     </section>
 
@@ -107,17 +107,8 @@
               <strong><i class="fa fa-user margin-r-5"></i>Statut matrimonial</strong>
 
               <p class="text-muted">
-                @if ($user->statusmatrimonial==0)
-                Célibataire
-                    @elseif($user->statusmatrimonial==1)
-                     Fiancé(e) 
-                    @elseif($user->statusmatrimonial==2)
-                     Marié(e)  
-                    @elseif($user->statusmatrimonial==3)
-                     Divorcé(e)  
-                    @elseif($user->statusmatrimonial==4)
-                     Veuf(ve) 
-                    @endif
+              {{ $user->statusmatrimonial}}
+               
               </p>
             
               <hr>
@@ -210,7 +201,7 @@
                 {{-- ALL THE DETAILS ABOUT THE student --}}
                     <section class="content-header">
                       <h1>
-                         Profile
+                         Profil
                       </h1>
                   </section>
                   <div class="content">

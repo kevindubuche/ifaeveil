@@ -229,7 +229,7 @@ class AllUserController extends AppBaseController
              User::where('id', $newData['user_id'])
              ->update(['password'=>$new_password]);
            
-             Flash::success('Votre mot de passe a ete moidifie avec succes');
+             Flash::success('Votre mot de passe a été moidifié avec succès');
              return redirect()->back();
    
          }else{

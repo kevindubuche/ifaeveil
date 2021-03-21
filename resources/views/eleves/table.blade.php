@@ -2,7 +2,8 @@
     <table id='myTable' class=' display   table table-bordered table-striped table-condensed'>
      
         <thead>
-            <tr><th></th>
+            <tr>
+                {{-- <th></th> --}}
                 <th>Nom</th>
         <th>Prenom</th>
         <th>Classe</th>
@@ -17,12 +18,12 @@
         <tbody>
         @foreach($eleves as $eleve)
             <tr>
-                <td><img src="{{asset('user_images/'.$eleve->image)}}"
+                {{-- <td><img src="{{asset('user_images/'.$eleve->image)}}"
                     alt="prof image"
                     class="rounded-circle"
                     width="50" 
                     height="50"
-                    style="border-radius:50%"/></td>
+                    style="border-radius:50%"/></td> --}}
                 <td>{{ $eleve->nom }}</td>
             <td>{{ $eleve->prenom }}</td>
             <td>{{ $eleve->Class->nom  }}</td>
